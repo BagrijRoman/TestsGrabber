@@ -1,4 +1,4 @@
-import MainPage from './MainPage';
+import MainPage from './MainPage/MainPage';
 
 // eslint-disable-next-line
 export { MainPage };
