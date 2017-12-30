@@ -6,11 +6,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 const BUILD_DIR = path.resolve(__dirname, 'build');
-const APP_DIR = path.resolve(__dirname, 'src/client');
-const RESOURSES_DIR_NAME = 'resources';
+const APP_DIR = path.resolve(__dirname, 'client');
+const RESOURSES_DIR_NAME = 'public';
 const RESOURSES_DIR_PATH = path.join(__dirname, RESOURSES_DIR_NAME);
-const INDEX_PAGE = path.resolve(__dirname, 'src/client/index.html');
-const DEV_SERVER_PORT = 8000;
+const INDEX_PAGE = path.resolve(__dirname, 'client/index.html');
+const DEV_SERVER_PORT = process.env.PORT || 8000;
+
 
 const config = {
   entry: APP_DIR + '/index.js',
@@ -58,7 +59,6 @@ const config = {
   devServer: {
     contentBase: BUILD_DIR,
     port: DEV_SERVER_PORT,
-
   },
 };
 
