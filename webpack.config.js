@@ -37,6 +37,11 @@ const config = {
       }
     ]
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.ENV': JSON.stringify(process.env.ENV),
+    })
+  ],
   devServer: {
     contentBase: BUILD_DIR,
     port: DEV_SERVER_PORT,

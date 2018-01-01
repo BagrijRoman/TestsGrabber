@@ -1,29 +1,25 @@
 const axios = require('axios');
 
 const responseHelper = require('../../util/responseHelper');
-
 const dataRoutes = require('../../const/dataRoutes');
+const pickArrayFields = require('../../util/pickArrayFields');
 
 const facultyRoutes = router => {
   router.route('/faculty/list')
     .get((req, res, next) => {
       const { method, url } = dataRoutes.faculty;
-
       axios({
         method,
         url,
-        data: {
-          id: 0,
-          lang: 1,
-        }
+        data: { id: 0, lang: 1 }
       })
-        .then((response) => {
-          res.send(response.data);
+        .then(({ data }) => {
+          const normalizedData = pickArrayFields(data, ['id', 'name']);
+          responseHelper.operationSuccess(res, normalizedData);
         })
         .catch((err) => {
-          console.log('ERROR !!!!!!!!!!!!!!!!!!!!!!!');
-          console.log(err.reason);
-          res.send('!!!!!!!!!!!!!!error');
+          console.log(err);
+          responseHelper.oparationFailed('Retrieveing faculties list error');
         });
     });
 

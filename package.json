@@ -2,8 +2,7 @@
   "name": "testsgrabber",
   "version": "1.0.0",
   "scripts": {
-
-    "dev-start": "webpack-dev-server --hot --inline  & nodemon ./server",
+    "dev-start": "webpack-dev-server --hot --inline & nodemon ./server",
     "dev": "ENV=development PORT=9000 npm run dev-start",
     "server": "node ./server",
     "build": "webpack",
@@ -31,6 +30,7 @@
     "jade": "^1.11.0",
     "morgan": "^1.9.0",
     "prop-types": "^15.6.0",
+    "ramda": "^0.25.0",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "react-redux": "^5.0.6",

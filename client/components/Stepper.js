@@ -40,7 +40,7 @@ const Stepper = () => (
     <Step>
       <Icon name='file text outline' />
       <Step.Content>
-        <Step.Title>Results</Step.Title>
+        <Step.Title>Testing</Step.Title>
         <Step.Description></Step.Description>
       </Step.Content>
     </Step>

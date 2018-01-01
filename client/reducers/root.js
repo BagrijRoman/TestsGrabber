@@ -1,11 +1,18 @@
-const initialState = {};
+import { SET_FACULTIES_LIST } from '../actions/actionTypes';
+import { rootReducerInitialState } from '../const';
 
-export default (state = initialState, action) => {
+export default (state = rootReducerInitialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case 'TEST_ACTION': {
-      return { ...state };
+    case SET_FACULTIES_LIST: {
+      return {
+        ...state,
+        paramsData: {
+          ...state.paramsData,
+          facultiesList: payload,
+        },
+      };
     }
     default: {
       return { ...state };

@@ -1,9 +1,22 @@
-import { compose, withProps, withHandlers  } from 'recompose';
-import axios from 'axios';
+import { compose, withProps, withHandlers, lifecycle  } from 'recompose';
+import { connect } from 'react-redux';
 
 import StepsWrapper from '../components/StepsWrapper';
+import { loadFacultiesList, prepareItemsSelectorOptions } from '../util';
 
-const enhance = compose();
 
+export default compose(
+  connect(({ root }, props) => {
+    const { facultiesList } = root.paramsData;
 
-export default enhance((StepsWrapper));
+    return {
+      facultiesList: prepareItemsSelectorOptions(facultiesList, 'name', 'id'),
+    };
+  }),
+
+  lifecycle({
+    componentWillMount() {
+      loadFacultiesList();
+    }
+  }),
+)(StepsWrapper);
