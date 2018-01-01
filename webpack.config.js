@@ -1,16 +1,10 @@
 /* eslint-disable */
 const webpack = require('webpack');
 const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
-const BUILD_DIR = path.resolve(__dirname, 'build');
+const BUILD_DIR = path.resolve(__dirname, 'public/build');
 const APP_DIR = path.resolve(__dirname, 'client');
-const RESOURSES_DIR_NAME = 'public';
-const RESOURSES_DIR_PATH = path.join(__dirname, RESOURSES_DIR_NAME);
-const INDEX_PAGE = path.resolve(__dirname, 'client/index.html');
-const DEV_SERVER_PORT = process.env.PORT || 8000;
+const DEV_SERVER_PORT = parseInt(process.env.PORT) + 1 || 8001;
 
 
 const config = {
@@ -43,19 +37,6 @@ const config = {
       }
     ]
   },
-  plugins: [
-    new CopyWebpackPlugin([{
-      from: RESOURSES_DIR_PATH,
-      to: RESOURSES_DIR_NAME,
-    }]),
-    new HtmlWebpackPlugin({
-      template: INDEX_PAGE,
-      hash: true
-    }),
-    new OpenBrowserPlugin({
-      url: `http://localhost:${DEV_SERVER_PORT}`,
-    })
-  ],
   devServer: {
     contentBase: BUILD_DIR,
     port: DEV_SERVER_PORT,

@@ -2,13 +2,15 @@ const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const http = require('http');
+const path = require('path');
 
+const api = require('./api');
 const normalizePort = require('./util/normalizePort');
 
 
 const port = normalizePort(process.env.PORT) || '3001';
 
-// const api = require('./routes/api');
+
 
 const app = express();
 app.set('port', port);
@@ -17,11 +19,24 @@ app.use(logger('dev'));
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({extended: false}));
 
-// app.use('/api', api);
+
+app.use(express.static(path.join(__dirname, '..', 'public')));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
+
+app.use('/api', api);
+
+
+app.use((req, res, next) => {
+  const { ENV, PORT } = process.env;
+  res.render('indexPage', { ENV, PORT: parseInt(PORT)+1 });
+});
+
+
 
 
 const server = http.createServer(app);
-
 server.listen(port);
 
 server.on('error', () => {
