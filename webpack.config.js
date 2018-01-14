@@ -1,3 +1,7 @@
+// TODO Roman
+// 1. add webpack config for server code to use imports/export like on client
+// 2. Add ui abblity to add cookie o unblock site
+
 /* eslint-disable */
 const webpack = require('webpack');
 const path = require('path');
