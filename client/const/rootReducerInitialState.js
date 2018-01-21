@@ -7,9 +7,9 @@ export const rootReducerInitialState = {
     testList: [],
   },
   selectedParams: {
-    faculty: {},
-    course: {},
-    subject: {},
-    test: {},
+    facultyId : '',
+    courseId: '',
+    subjectId: '',
+    testId: '',
   },
 };
