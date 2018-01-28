@@ -23,3 +23,8 @@ export const loadSubjectsList = (courseId) =>
 
 export const loadTestsList = (subjectId) =>
   loadData({ method: 'GET', url: `${apiRoutes.tests}?subjectId=${subjectId}` }, setTestsList);
+
+export const loadTestInstance = (testId) => axios({
+  method: 'GET',
+  url: `${apiRoutes.testInstance}?testId=${testId}`
+});

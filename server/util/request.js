@@ -22,7 +22,7 @@ const request = ({ method, url, data, headers }) =>
     method,
     url,
     data: data || {},
-    headers: R.merge(defaultHeaders, (headers||{})),
+    headers: R.merge(defaultHeaders, headers || {} ),
   });
 
 module.exports = request;

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Icon, Container, Accordion, Dropdown } from 'semantic-ui-react'
+import { Container, Accordion } from 'semantic-ui-react'
 
 import ItemsSelector from '../containers/ItemsSelector';
-
+import TestGrabber from '../containers/TestGrabber';
 
 const StepsWrapper = ({
                         facultiesList,
@@ -68,8 +68,14 @@ const StepsWrapper = ({
         />
       </Accordion.Content>
 
-      <Accordion.Title index={4}>Testing </Accordion.Title>
-      <Accordion.Content> qweqweeq </Accordion.Content>
+      {/*<Accordion.Title active={stepIndex === 4}>Testing </Accordion.Title>*/}
+      {/*<Accordion.Content active={stepIndex === 4}>*/}
+      <Accordion.Title active>Testing </Accordion.Title>
+      <Accordion.Content active>
+        <TestGrabber
+          onClickBack={prevStep}
+        />
+      </Accordion.Content>
     </Accordion>
   </Container>
 );
