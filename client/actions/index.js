@@ -9,6 +9,7 @@ import {
   SET_SELECTED_COURSE,
   SET_SELECTED_SUBJECT,
   SET_SELECTED_TEST,
+  ADD_TESTS_TO_RESULT,
 } from './actionTypes';
 
 export const goNextStep = () => ({
@@ -61,3 +62,10 @@ export const setSelectedTest = (testId) => ({
   payload: testId,
 });
 
+export const addTestsToResult = (testsObject, testId) => ({
+  type: ADD_TESTS_TO_RESULT,
+  payload: {
+    testsObject,
+    testId,
+  },
+});

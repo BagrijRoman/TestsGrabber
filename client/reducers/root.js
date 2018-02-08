@@ -9,6 +9,7 @@ import {
   SET_SELECTED_COURSE,
   SET_SELECTED_SUBJECT,
   SET_SELECTED_TEST,
+  ADD_TESTS_TO_RESULT,
 } from '../actions/actionTypes';
 import { rootReducerInitialState } from '../const';
 
@@ -119,6 +120,21 @@ export default (state = rootReducerInitialState, action) => {
           testId: payload,
         }
       };
+
+    case ADD_TESTS_TO_RESULT: {
+      const { testsObject, testId } = payload;
+      const currentTestValues = state.tests[testId] || {};
+      return {
+        ...state,
+        tests: {
+          ...state.tests,
+          [testId]: {
+            ...currentTestValues,
+            ...testsObject,
+          }
+        }
+      }
+    }
 
     default: return { ...state };
   }

@@ -3,6 +3,7 @@ const request = require('../util/request');
 const getTestInstance = require ('../util/getTestInstance');
 const dataRoutes = require('../const/dataRoutes');
 const pickArrayFields = require('../util/pickArrayFields');
+const normalizeData = require('../util/normalizeData');
 
 const facultyRoutes = router => {
   router.route('/test/list')
@@ -16,8 +17,8 @@ const facultyRoutes = router => {
         data: { id: subjectId, lang: 1 },
       })
         .then(({ data }) => {
-          const normalizedData = pickArrayFields(data, ['id', 'name']);
-          responseHelper.operationSuccess(res, normalizedData);
+          const dataNormalized = pickArrayFields(data, ['id', 'name']);
+          responseHelper.operationSuccess(res, dataNormalized);
         })
         .catch((err) => {
           console.log(err);
@@ -30,10 +31,11 @@ const facultyRoutes = router => {
       const { testId } = req.query;
       getTestInstance(testId)
         .then((result) => {
-          responseHelper.operationSuccess(res, result);
+          const normalizedTests = normalizeData(result);
+          responseHelper.operationSuccess(res, normalizedTests.dataIndexed);
         })
         .catch((err) => {
-          console.log(err);
+          console.log('Retrieveing test instance error');
           responseHelper.oparationFailed('Retrieveing test instance error');
         });
     });
