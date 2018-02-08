@@ -1,5 +1,7 @@
-const parseQuestionAnswers = (answersList, trueAnswerId ) => answersList.map(({ id, text }) =>
-  id === trueAnswerId ? { id, text, isTrueAnswer: true } : { id, text });
+const parseQuestionAnswers = (answersList, trueAnswerId ) =>
+  answersList
+    .map(({ id, text }) => id === trueAnswerId ? { id, text, isTrueAnswer: true } : { id, text })
+    .sort(({ isTrueAnswer }) => isTrueAnswer ? 0 : 1);
 
 
 const parseQuestionsList = ({ questions, stat }) => questions.map((question, index) => {

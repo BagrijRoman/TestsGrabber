@@ -6,7 +6,10 @@ import { loadTestInstance } from '../util/dataLoader';
 import { addTestsToResult } from '../actions';
 
 export default compose(
-  connect(({ root: { selectedParams: { testId } } }) => ({ testId })),
+  connect(({ root: { selectedParams: { testId }, tests } }) => ({
+    testId,
+    grabbedTestsCount: Object.keys(tests[testId] || {}).length,
+  })),
   withState('grabTestsCount', 'setGrabTestsCount', 10),
   withState('isGrabbingTest', 'setGrabbingTestState', false),
 

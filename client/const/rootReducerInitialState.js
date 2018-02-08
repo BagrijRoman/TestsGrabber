@@ -10,7 +10,7 @@ export const rootReducerInitialState = {
     facultyId : '',
     courseId: '',
     subjectId: '',
-    testId: '2280',
+    testId: '',
   },
   tests: {},
 };

@@ -2,7 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Button, Input, Label } from 'semantic-ui-react'
 
-const TestGrabber = ({ onClickBack, grabTestsCount, onGrabTestsCountChange, isGrabbingTest, grabTest }) =>
+const TestGrabber = ({
+  onClickBack,
+  grabTestsCount,
+  onGrabTestsCountChange,
+  isGrabbingTest,
+  grabTest,
+  grabbedTestsCount,
+}) =>
   <Container>
     <Container>
       <Input
@@ -14,7 +21,7 @@ const TestGrabber = ({ onClickBack, grabTestsCount, onGrabTestsCountChange, isGr
         onChange={onGrabTestsCountChange}
         disabled={isGrabbingTest}
       />
-      <Label pointing='left'>Grabbed tests count  100</Label>
+      <Label pointing='left'>Grabbed tests count {grabbedTestsCount}</Label>
     </Container>
     <Container>
       <Button

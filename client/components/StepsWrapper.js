@@ -68,10 +68,8 @@ const StepsWrapper = ({
         />
       </Accordion.Content>
 
-      {/*<Accordion.Title active={stepIndex === 4}>Testing </Accordion.Title>*/}
-      {/*<Accordion.Content active={stepIndex === 4}>*/}
-      <Accordion.Title active>Testing </Accordion.Title>
-      <Accordion.Content active>
+      <Accordion.Title active={stepIndex === 4}>Testing </Accordion.Title>
+      <Accordion.Content active={stepIndex === 4}>
         <TestGrabber
           onClickBack={prevStep}
         />
