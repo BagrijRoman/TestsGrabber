@@ -9,6 +9,7 @@ const TestGrabber = ({
   isGrabbingTest,
   grabTest,
   grabbedTestsCount,
+  downloadTestResults,
 }) =>
   <Container>
     <Container>
@@ -37,9 +38,14 @@ const TestGrabber = ({
         labelPosition="right"
         onClick={grabTest}
         loading={isGrabbingTest}
-        disabled={isGrabbingTest}
       />
     </Container>
+    <Button
+      onClick={downloadTestResults}
+      disabled={isGrabbingTest || !grabbedTestsCount}
+    >
+      Load test results
+    </Button>
   </Container>;
 
 TestGrabber.propTypes = {
